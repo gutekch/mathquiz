@@ -1,38 +1,161 @@
-.App {
+.header {
   text-align: center;
+  background-color: aqua;
+  width: 200px;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 40px;
+  padding: 10px;
+  border: 4px solid black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.task-description {
+  text-align: center;
+  background-color: aqua;
+  width: 600px;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 40px;
+  padding: 10px;
+  font-weight: 800;
+  border: 3px solid black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.arrow {
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  transform: rotate(270deg);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.startButton {
+  background-color: red;
+  font-size: 50px;
+  color: white;
+  border-radius: 50px;
+  padding: 5px 30px;
+  display: block;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 110px;
+}
+
+.first-number,
+.second-number,
+.sign {
+  font-size: 70px;
+  margin: 50px 50px;
+}
+
+.answers {
+  display: flex;
+  justify-content: center;
+}
+.first-random,
+.second-random,
+.third-random {
+  font-size: 70px;
+  margin: 50px 50px;
+}
+
+.isEqualTo {
+  text-align: center;
+  font-size: 50px;
+  height: 40px;
+}
+
+.answer {
+  background-color: green;
+  width: 250px;
+  text-align: center;
+  border-radius: 40px;
+  font-size: 50px;
+  position: fixed;
+  bottom:200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid black;
+}
+
+.badAnswer {
+  background-color: red;
+  width: 300px;
+  text-align: center;
+  border-radius: 40px;
+  font-size: 50px;
+  position: fixed;
+  bottom:200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid black;
+}
+
+.tryAgain {
+  background-color: yellow;
+  font-size: 30px;
+  width: 200px;
+  border-radius: 50px;
+  border: 2px solid black;
+  text-align: center;
+  transform: rotate(-30deg);
+  margin-top: -350px;
+  margin-left: 300px;
+}
+
+.seconds {
+  font-size: 100px;
+  position: fixed;
+  top: 100px;
+  right: 100px;
+}
+
+.correctNum{
+  font-size: 40px;
+  position:fixed;
+  right:100px;
+  top:300px;
+}
+
+.falseNum{
+  font-size: 40px;
+  position:fixed;
+  right:100px;
+  top:350px;
+}
+
+.modal-content{
+  width:450px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  position: fixed;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 20px;
+  border:15px solid red;
+  border-radius: 30px;
+  background-color: rgb(255, 251, 140);
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.closeButton{
+  background-color: white;
+  margin-top:20px;
+  border:2px solid red;
+  border-radius:5px;
+  font-size:20px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
