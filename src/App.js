@@ -23,6 +23,7 @@ function App() {
   const [equalSign,setEqualSign] = useState(false);
   const [plusSign,setPlusSign] = useState(false);
   const [pigSoundPlayed, setPigSoundPlayed] = useState(false);
+  const [stevenAudioPlay,setStevenAudioPlay] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -38,11 +39,10 @@ function App() {
   }, [seconds]);
 
   function startTime() {
-    setSeconds(3);
+    setSeconds(30);
     setAdvanced(false);
     setIntermediate(false);
     setBeginner(false);
-    setPigSoundPlayed(false);
   };
    
   
@@ -83,9 +83,9 @@ function App() {
   };
 
   const CustomModal = ({ onClose, correctNum, falseNum }) => {
-    if (correctNum >= 15) {
+    if (correctNum >= 40) {
       setAdvanced(true);
-    } else if (correctNum >= 10) {
+    } else if (correctNum >= 8) {
       setIntermediate(true);
     } else {
       setBeginner(true);
@@ -100,14 +100,26 @@ function App() {
       }
     }, [beginner, pigSoundPlayed]);
 
+    useEffect(() => {
+      const stevenAudio = new Audio(process.env.PUBLIC_URL + "/stevenvoice.wav");
+    
+      if (intermediate && !stevenAudioPlay) {
+        stevenAudio.play();
+        setStevenAudioPlay(true);
+      }
+    }, [intermediate, stevenAudioPlay]);
+
     return (
       <div className="custom-modal">
         <div className="modal-content">
           {advanced && <p className="advanced">Brilliant!</p>}
           {intermediate && (
+            <div>
             <p className="intermediate">
               Congratz! You did well. Not the best though.
             </p>
+            <img className="steven-img" src={process.env.PUBLIC_URL + "/steven-img.png"}/>
+            </div>
           )}
           {beginner && (
             <div>
@@ -127,6 +139,8 @@ function App() {
     setShowModel(false);
     setCorrectNum(0);
     setFalseNum(0);
+    setPigSoundPlayed(false);
+    setStevenAudioPlay(false);
   }
 
   return (
