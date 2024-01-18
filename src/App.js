@@ -22,23 +22,28 @@ function App() {
   const [beginner, setBeginner] = useState(false);
   const [equalSign,setEqualSign] = useState(false);
   const [plusSign,setPlusSign] = useState(false);
+  const [pigSoundPlayed, setPigSoundPlayed] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : []));
     }, 1000);
-
+  
+    if (seconds === 0) {
+      clearInterval(intervalId);
+      setShowModel(true);
+    }
+  
     return () => clearInterval(intervalId);
-  }, []);
+  }, [seconds]);
 
   function startTime() {
-    setSeconds(30);
+    setSeconds(3);
     setAdvanced(false);
     setIntermediate(false);
     setBeginner(false);
-    setTimeout(()=>{
-      setShowModel(true)
-    },30000)};
+    setPigSoundPlayed(false);
+  };
    
   
 
@@ -85,6 +90,16 @@ function App() {
     } else {
       setBeginner(true);
     }
+
+    useEffect(() => {
+      const pigAudio = new Audio(process.env.PUBLIC_URL + "/pig.mp3");
+    
+      if (beginner && !pigSoundPlayed) {
+        pigAudio.play();
+        setPigSoundPlayed(true);
+      }
+    }, [beginner, pigSoundPlayed]);
+
     return (
       <div className="custom-modal">
         <div className="modal-content">
@@ -95,7 +110,9 @@ function App() {
             </p>
           )}
           {beginner && (
-            <p className="beginner">Cmon man... You can do better</p>
+            <div>
+            <p className="beginner">Cmon man... You can do better</p><img className="pig-img" src={process.env.PUBLIC_URL + "/pig.png"}/>
+            </div>
           )}
           <h2>Score</h2>
           <p>CORRECT: {correctNum}</p>

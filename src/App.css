@@ -159,3 +159,54 @@
   font-size:20px;
 
 }
+
+.pig-img{
+  height: 100px;
+  margin-top:-20px;
+  position: relative;
+  animation: movePig 5s linear infinite;
+}
+
+@keyframes movePig {
+  0% {
+    left:0;
+    top:0;
+  }
+  10% {
+    top:10px;
+  }
+  20% {
+    top:0;
+  }
+  30% {
+    top:10px;
+  }
+  40% {
+    top:0;
+  }
+  50% {
+    left: 100px;
+    transform: scaleX(1);
+    top:10px
+  }
+  
+  51%{
+    transform: scaleX(-1);
+  }
+  60%{
+    top:0;
+  }
+  70%{
+    top:10px;
+  }
+  80%{
+    top:0;
+  }
+  90%{
+    top:10px;
+  }
+  100% {
+    left: 0;
+    transform: scaleX(-1);
+  }
+}
